@@ -1,0 +1,361 @@
+/* ============================================
+   src/theme/slds-theme.css
+   Single source of truth for visual styling.
+   Agentforce Studio template.
+   ============================================ */
+
+/* 1. Imports (if required by your build) */
+/* @import "@salesforce-ux/design-tokens/dist/index.css"; */
+
+/* 2. Token overrides (brand or product-specific) */
+/* (none needed for nav/body — applied per-component below) */
+
+/* 3. App aliases (must equal SLDS tokens or structural layout only) */
+:root {
+  /* Nav column width: 20rem (320px at 16px) — structural layout constant */
+  --app-nav-column-width: 20rem;
+  /* Collapsed nav: icon bar width */
+  --app-nav-icon-bar-width: 3rem;
+  /* Nav action row height (collapsed = same as expanded so icons don't shift) */
+  --app-nav-action-height: 2.5rem;
+  /* Global header height: 64px — reserve space so content is pushed below fixed header */
+  --app-global-header-height: 64px;
+  /* Global header horizontal padding */
+  --app-global-header-padding-x: 12px;
+  /* Logo height in global header */
+  --app-global-header-logo-height: 42px;
+}
+
+/* 4. Component variant hooks — Agentforce Studio app shell and nav */
+html {
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  padding-top: var(--app-global-header-height);
+}
+
+/* Shell: fixed height to viewport, no page scroll; only nav list and main scroll internally */
+.app-shell {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - var(--app-global-header-height));
+  max-height: calc(100vh - var(--app-global-header-height));
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Placeholder column stays narrow when nav is collapsed (peek overlay doesn't shift layout) */
+.app-shell .app-vertical-nav_collapsed {
+  width: var(--app-nav-icon-bar-width);
+  min-width: var(--app-nav-icon-bar-width);
+}
+
+/* Hide nav until persisted state is applied (prevents flash on navigation) */
+#app-vertical-nav.app-vertical-nav_restoring {
+  opacity: 0;
+}
+
+.app-main {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  background-color: var(--slds-g-color-neutral-base-95);
+}
+
+.app-nav-vertical-wrapper {
+  width: var(--app-nav-column-width);
+  min-width: var(--app-nav-column-width);
+  height: 100%;
+  align-self: stretch;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  /* Right border: grey-90 (--slds-g-color-neutral-base-90) */
+  border-inline-end: 1px solid var(--slds-g-color-neutral-base-90);
+}
+
+/* Collapsed: icon bar only (narrow, hide labels/section icons/sublists). Not when peek is open. */
+.app-nav-vertical-wrapper.app-nav-vertical-wrapper_collapsed:not(.app-nav-vertical-wrapper_peek) {
+  width: var(--app-nav-icon-bar-width);
+  min-width: var(--app-nav-icon-bar-width);
+}
+.app-nav-vertical-wrapper_collapsed:not(.app-nav-vertical-wrapper_peek) .slds-nav-vertical__action-text,
+.app-nav-vertical-wrapper_collapsed:not(.app-nav-vertical-wrapper_peek) .app-nav-top .slds-truncate,
+.app-nav-vertical-wrapper_collapsed:not(.app-nav-vertical-wrapper_peek) .app-nav-bottom .slds-truncate {
+  display: none;
+}
+.app-nav-vertical-wrapper_collapsed:not(.app-nav-vertical-wrapper_peek) .app-nav-section-icon,
+.app-nav-vertical-wrapper_collapsed:not(.app-nav-vertical-wrapper_peek) .app-nav-icon-expand {
+  display: none !important;
+}
+.app-nav-vertical-wrapper_collapsed:not(.app-nav-vertical-wrapper_peek) .app-nav-sublist {
+  display: none;
+}
+.app-nav-vertical-wrapper_collapsed:not(.app-nav-vertical-wrapper_peek) .slds-nav-vertical__action {
+  justify-content: center;
+  padding-inline-end: var(--slds-g-spacing-4);
+}
+.app-nav-vertical-wrapper_collapsed:not(.app-nav-vertical-wrapper_peek) .slds-icon_container.slds-m-right_x-small {
+  margin-inline-end: 0;
+}
+
+/* Peek: overlay only (position/size). Below global header (SLDS header z-index: 100). */
+.app-nav-vertical-wrapper.app-nav-vertical-wrapper_peek {
+  position: fixed;
+  left: 0;
+  top: var(--app-global-header-height);
+  width: var(--app-nav-column-width);
+  min-width: var(--app-nav-column-width);
+  height: calc(100vh - var(--app-global-header-height));
+  z-index: 90;
+}
+
+.app-nav-vertical-wrapper .slds-nav-vertical {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.app-nav-vertical-wrapper .slds-nav-vertical__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Nav action: same height in collapsed and expanded so icons don't shift */
+.app-nav-vertical-wrapper .slds-nav-vertical__action {
+  min-height: var(--app-nav-action-height);
+  padding-inline-start: var(--slds-g-spacing-4);
+  padding-inline-end: var(--slds-g-spacing-4);
+}
+
+/* Top: Getting Started + Home — fixed at top, no shrink */
+.app-nav-vertical-wrapper .app-nav-top {
+  flex-shrink: 0;
+  padding-top: var(--slds-g-spacing-2);
+  padding-bottom: 0;
+}
+
+/* Middle: scrollable region from Agents down to Analytics */
+.app-nav-vertical-wrapper .app-nav-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+.app-nav-vertical-wrapper .app-nav-scroll .app-nav-sections {
+  padding-top: 0;
+  padding-bottom: var(--slds-g-spacing-2);
+}
+
+/* Bottom: Collapse / Expand — fixed at bottom, no shrink; only one icon visible at a time */
+.app-nav-vertical-wrapper .app-nav-bottom {
+  flex-shrink: 0;
+  padding-top: var(--slds-g-spacing-2);
+  padding-bottom: var(--slds-g-spacing-2);
+  border-top: 1px solid var(--slds-g-color-neutral-base-90);
+}
+.app-nav-toggle .app-nav-toggle-icon-collapse[hidden],
+.app-nav-toggle .app-nav-toggle-icon-expand[hidden] {
+  display: none !important;
+}
+
+/* Divider between nav groups */
+.app-nav-divider {
+  list-style: none;
+  height: 0;
+  overflow: hidden;
+  padding: 0 !important;
+  margin: var(--slds-g-spacing-2) 0;
+  border-top: 1px solid var(--slds-g-color-neutral-base-90);
+}
+
+/* Indented sub-items; hidden when section collapsed. Child items: 48px left padding (--slds-g-spacing-12). */
+.app-nav-sublist {
+  padding-inline-start: 0;
+}
+.app-nav-sublist .slds-nav-vertical__action {
+  padding-inline-start: var(--slds-g-spacing-7);
+}
+button.slds-nav-vertical__action_overflow[aria-expanded="false"] + .app-nav-sublist {
+  display: none;
+}
+
+/* Collapsible section headers: not shaded, not link-styled, not grey */
+.app-nav-vertical-wrapper .app-nav-section-item:before {
+  display: none !important;
+}
+.app-nav-vertical-wrapper .app-nav-section-header {
+  padding-inline-start: var(--slds-g-spacing-4);
+  padding-inline-end: var(--slds-g-spacing-4);
+  color: var(--slds-g-color-neutral-base-10) !important;
+  font-weight: 600;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+  cursor: pointer;
+}
+.app-nav-vertical-wrapper .app-nav-section-header:hover,
+.app-nav-vertical-wrapper .app-nav-section-header:focus,
+.app-nav-vertical-wrapper .app-nav-section-header:active {
+  box-shadow: none !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: var(--slds-g-color-neutral-base-10) !important;
+}
+.app-nav-vertical-wrapper .app-nav-section-header .slds-nav-vertical__action-text {
+  color: inherit !important;
+}
+
+/* Section header expand/collapse icon on the far right */
+.app-nav-vertical-wrapper .app-nav-section-icon {
+  margin-inline-start: auto;
+  display: inline-flex;
+  flex-shrink: 0;
+}
+.app-nav-vertical-wrapper .app-nav-section-icon .slds-icon {
+  fill: var(--slds-g-color-neutral-base-50, currentColor);
+}
+.app-nav-vertical-wrapper .app-nav-section-header[aria-expanded="true"] .app-nav-icon-expand {
+  display: none;
+}
+.app-nav-vertical-wrapper .app-nav-section-header[aria-expanded="true"] .app-nav-icon-collapse {
+  display: inline-block;
+}
+.app-nav-vertical-wrapper .app-nav-section-header[aria-expanded="false"] .app-nav-icon-expand {
+  display: inline-block;
+}
+.app-nav-vertical-wrapper .app-nav-section-header[aria-expanded="false"] .app-nav-icon-collapse {
+  display: none;
+}
+
+/* Active nav item: visible selected state (SLDS-compatible) */
+.app-nav-vertical-wrapper .slds-nav-vertical__item.slds-is-active .slds-nav-vertical__action {
+  font-weight: 700;
+  box-shadow: inset 4px 0 0 var(--slds-g-color-brand-base-60, #1b96ff);
+}
+.app-nav-vertical-wrapper .slds-nav-vertical__item.slds-is-active:before {
+  background: rgba(21, 137, 238, 0.1);
+}
+
+/* Collapsed nav only: when a section has an active child, show the section header as selected (icon bar needs category highlight) */
+.app-nav-vertical-wrapper_collapsed:not(.app-nav-vertical-wrapper_peek) .app-nav-section-item:has(.slds-is-active) .app-nav-section-header {
+  font-weight: 700;
+  box-shadow: none !important;
+  background-color: rgba(21, 137, 238, 0.1) !important;
+  border-inline-start-width: 4px;
+  border-inline-start-style: solid;
+  border-inline-start-color: var(--slds-g-color-brand-base-60, #1b96ff) !important;
+  padding-inline-start: calc(var(--slds-g-spacing-4) - 4px);
+}
+
+/* In peek mode, only show active state on the actual page link (e.g. My Agents), not on the parent section header */
+.app-nav-vertical-wrapper_peek .app-nav-section-item:has(.slds-is-active) .app-nav-section-header {
+  font-weight: 600;
+  box-shadow: none !important;
+  background-color: transparent !important;
+}
+
+/* Page header icon (list and detail): 24x24 SVG inside 32x32 blue circular container */
+#main .slds-page-header .slds-media__figure .slds-icon_container,
+.app-main .slds-page-header .slds-media__figure .slds-icon_container {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+#main .slds-page-header .slds-page-header__icon,
+.app-main .slds-page-header .slds-page-header__icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Detail page header icon: same container background as list page */
+.app-page-header__icon-container {
+  background-color: var(--slds-c-icon-color-background, rgb(16, 124, 173));
+}
+.app-page-header__icon-container .slds-icon {
+  fill: var(--slds-g-color-neutral-base-100, #fff);
+}
+
+/* Breadcrumb on detail/drilldown: show only parent, not current page */
+.slds-page-header .slds-breadcrumb .slds-breadcrumb__item:last-child {
+  display: none;
+}
+
+/* Global header: 64px height, 12px left/right padding, vertically center all content */
+.slds-global-header_container .slds-global-header {
+  display: flex;
+  align-items: center;
+  min-height: var(--app-global-header-height);
+  height: var(--app-global-header-height);
+  padding-left: var(--app-global-header-padding-x);
+  padding-right: var(--app-global-header-padding-x);
+}
+.slds-global-header_container .slds-global-header__item {
+  display: flex;
+  align-items: center;
+}
+/* Logo item: no left/right padding so logo sits flush with header padding */
+.slds-global-header_container .slds-global-header__item:first-child {
+  padding-left: 0;
+  padding-right: 0;
+}
+/* Actions item (right): no left/right padding */
+.slds-global-header_container .slds-global-header__item:last-child {
+  padding-left: 0;
+  padding-right: 0;
+}
+/* Keep search bar full width: item keeps SLDS flex/min-width, form fills the item */
+.slds-global-header_container .slds-global-header__item_search {
+  flex: 0 1 33.5rem;
+  min-width: 27.5rem;
+}
+.slds-global-header_container .slds-global-header__item_search .slds-form-element {
+  flex: 1 1 100%;
+  min-width: 0;
+  width: 100%;
+}
+.slds-global-header_container .slds-global-header__item_search .slds-form-element__control {
+  width: 100%;
+  border-radius: 9999px;
+}
+.slds-global-header_container .slds-global-header__item_search .slds-form-element__control .slds-input {
+  border-radius: 9999px;
+}
+.slds-global-header_container .slds-global-actions {
+  display: flex;
+  align-items: center;
+}
+
+/* Global header: use img/salesforce-logo.svg instead of background logo; logo 42px tall, vertically centered */
+.slds-global-header__logo {
+  background-image: none;
+  display: flex;
+  align-items: center;
+}
+
+.slds-global-header__logo-img {
+  display: block;
+  height: var(--app-global-header-logo-height);
+  width: auto;
+  max-width: 12.5rem;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.slds-p-horizontal_medium {
+  padding: 0;
+}

@@ -1,0 +1,168 @@
+<!-- Reusable Agentforce Studio vertical navigation. Load via js/vertical-nav.js into #app-vertical-nav. -->
+<div class="app-nav-vertical-wrapper">
+  <nav class="slds-nav-vertical" aria-label="Agentforce Studio">
+    <!-- Top: Getting Started, Home (flex-shrink: 0) -->
+    <ul class="slds-nav-vertical__list app-nav-list app-nav-top">
+      <li class="slds-nav-vertical__item">
+        <a href="#" class="slds-nav-vertical__action">
+          <span class="slds-icon_container slds-m-right_x-small">
+            <svg class="slds-icon slds-icon_xx-small slds-icon-text-default" aria-hidden="true">
+              <use href="theme/slds-1/assets/icons/utility-sprite/svg/symbols.svg#topic"></use>
+            </svg>
+          </span>
+          <span class="slds-truncate">Getting Started</span>
+        </a>
+      </li>
+      <li class="slds-nav-vertical__item">
+        <a href="index.html" class="slds-nav-vertical__action">
+          <span class="slds-icon_container slds-m-right_x-small">
+            <svg class="slds-icon slds-icon_xx-small slds-icon-text-default" aria-hidden="true">
+              <use href="theme/slds-1/assets/icons/utility-sprite/svg/symbols.svg#home"></use>
+            </svg>
+          </span>
+          <span class="slds-truncate">Home</span>
+        </a>
+      </li>
+      <li class="slds-nav-vertical__item app-nav-divider" role="separator"></li>
+    </ul>
+    <!-- Middle: Agents through Analytics (scrollable) -->
+    <div class="app-nav-scroll" role="region" aria-label="Navigation sections">
+      <ul class="slds-nav-vertical__list app-nav-list app-nav-sections">
+      <!-- Expandable sections -->
+      <li class="slds-nav-vertical__item app-nav-section-item">
+        <button type="button" class="slds-nav-vertical__action slds-nav-vertical__action_overflow app-nav-section-header" aria-expanded="true" aria-controls="nav-section-agents">
+          <span class="slds-icon_container slds-m-right_x-small">
+            <svg class="slds-icon slds-icon_xx-small slds-icon-text-default" aria-hidden="true">
+              <use href="theme/slds-1/assets/icons/utility-sprite/svg/symbols.svg#sparkle"></use>
+            </svg>
+          </span>
+          <span class="slds-nav-vertical__action-text">Agents</span>
+          <span class="app-nav-section-icon">
+            <span class="app-nav-icon-expand" aria-hidden="true"><svg class="slds-icon slds-icon_xx-small slds-icon-text-default" aria-hidden="true"><use href="theme/slds-1/assets/icons/utility-sprite/svg/symbols.svg#add"></use></svg></span>
+            <span class="app-nav-icon-collapse" aria-hidden="true"><svg class="slds-icon slds-icon_xx-small slds-icon-text-default" aria-hidden="true"><use href="theme/slds-1/assets/icons/utility-sprite/svg/symbols.svg#dash"></use></svg></span>
+          </span>
+        </button>
+        <ul id="nav-section-agents" class="slds-nav-vertical__list app-nav-sublist">
+          <li class="slds-nav-vertical__item"><a href="agents.html" class="slds-nav-vertical__action"><span class="slds-truncate">My Agents</span></a></li>
+          <li class="slds-nav-vertical__item"><a href="asset-library.html" class="slds-nav-vertical__action"><span class="slds-truncate">Asset Library</span></a></li>
+          <li class="slds-nav-vertical__item"><a href="connections.html" class="slds-nav-vertical__action"><span class="slds-truncate">Connections</span></a></li>
+          <li class="slds-nav-vertical__item"><a href="mcp-servers.html" class="slds-nav-vertical__action"><span class="slds-truncate">MCP Servers</span></a></li>
+        </ul>
+      </li>
+      <li class="slds-nav-vertical__item app-nav-section-item">
+        <button type="button" class="slds-nav-vertical__action slds-nav-vertical__action_overflow app-nav-section-header" aria-expanded="true" aria-controls="nav-section-models">
+          <span class="slds-icon_container slds-m-right_x-small">
+            <svg class="slds-icon slds-icon_xx-small slds-icon-text-default" aria-hidden="true">
+              <use href="theme/slds-1/assets/icons/utility-sprite/svg/symbols.svg#fallback"></use>
+            </svg>
+          </span>
+          <span class="slds-nav-vertical__action-text">Models</span>
+          <span class="app-nav-section-icon">
+            <span class="app-nav-icon-expand" aria-hidden="true"><svg class="slds-icon slds-icon_xx-small slds-icon-text-default" aria-hidden="true"><use href="theme/slds-1/assets/icons/utility-sprite/svg/symbols.svg#add"></use></svg></span>
+            <span class="app-nav-icon-collapse" aria-hidden="true"><svg class="slds-icon slds-icon_xx-small slds-icon-text-default" aria-hidden="true"><use href="theme/slds-1/assets/icons/utility-sprite/svg/symbols.svg#dash"></use></svg></span>
+          </span>
+        </button>
+        <ul id="nav-section-models" class="slds-nav-vertical__list app-nav-sublist">
+          <li class="slds-nav-vertical__item"><a href="foundation-models.html" class="slds-nav-vertical__action"><span class="slds-truncate">Foundation Models</span></a></li>
+          <li class="slds-nav-vertical__item"><a href="generative-models.html" class="slds-nav-vertical__action"><span class="slds-truncate">Generative Models</span></a></li>
+          <li class="slds-nav-vertical__item"><a href="predictive-models.html" class="slds-nav-vertical__action"><span class="slds-truncate">Predictive Models</span></a></li>
+          <li class="slds-nav-vertical__item"><a href="embedding-models.html" class="slds-nav-vertical__action"><span class="slds-truncate">Embedding Models</span></a></li>
+        </ul>
+      </li>
+      <li class="slds-nav-vertical__item app-nav-section-item">
+        <button type="button" class="slds-nav-vertical__action slds-nav-vertical__action_overflow app-nav-section-header" aria-expanded="true" aria-controls="nav-section-data">
+          <span class="slds-icon_container slds-m-right_x-small">
+            <svg class="slds-icon slds-icon_xx-small slds-icon-text-default" aria-hidden="true">
+              <use href="theme/slds-1/assets/icons/utility-sprite/svg/symbols.svg#database"></use>
+            </svg>
+          </span>
+          <span class="slds-nav-vertical__action-text">Data</span>
+          <span class="app-nav-section-icon">
+            <span class="app-nav-icon-expand" aria-hidden="true"><svg class="slds-icon slds-icon_xx-small slds-icon-text-default" aria-hidden="true"><use href="theme/slds-1/assets/icons/utility-sprite/svg/symbols.svg#add"></use></svg></span>
+            <span class="app-nav-icon-collapse" aria-hidden="true"><svg class="slds-icon slds-icon_xx-small slds-icon-text-default" aria-hidden="true"><use href="theme/slds-1/assets/icons/utility-sprite/svg/symbols.svg#dash"></use></svg></span>
+          </span>
+        </button>
+        <ul id="nav-section-data" class="slds-nav-vertical__list app-nav-sublist">
+          <li class="slds-nav-vertical__item"><a href="data-libraries.html" class="slds-nav-vertical__action"><span class="slds-truncate">Data Libraries</span></a></li>
+          <li class="slds-nav-vertical__item"><a href="search-indexes.html" class="slds-nav-vertical__action"><span class="slds-truncate">Search Indexes</span></a></li>
+          <li class="slds-nav-vertical__item"><a href="retrievers.html" class="slds-nav-vertical__action"><span class="slds-truncate">Retrievers</span></a></li>
+        </ul>
+      </li>
+      <li class="slds-nav-vertical__item app-nav-section-item">
+        <button type="button" class="slds-nav-vertical__action slds-nav-vertical__action_overflow app-nav-section-header" aria-expanded="true" aria-controls="nav-section-prompts">
+          <span class="slds-icon_container slds-m-right_x-small">
+            <svg class="slds-icon slds-icon_xx-small slds-icon-text-default" aria-hidden="true">
+              <use href="theme/slds-1/assets/icons/utility-sprite/svg/symbols.svg#prompt_builder"></use>
+            </svg>
+          </span>
+          <span class="slds-nav-vertical__action-text">Prompts</span>
+          <span class="app-nav-section-icon">
+            <span class="app-nav-icon-expand" aria-hidden="true"><svg class="slds-icon slds-icon_xx-small slds-icon-text-default" aria-hidden="true"><use href="theme/slds-1/assets/icons/utility-sprite/svg/symbols.svg#add"></use></svg></span>
+            <span class="app-nav-icon-collapse" aria-hidden="true"><svg class="slds-icon slds-icon_xx-small slds-icon-text-default" aria-hidden="true"><use href="theme/slds-1/assets/icons/utility-sprite/svg/symbols.svg#dash"></use></svg></span>
+          </span>
+        </button>
+        <ul id="nav-section-prompts" class="slds-nav-vertical__list app-nav-sublist">
+          <li class="slds-nav-vertical__item"><a href="prompts.html" class="slds-nav-vertical__action"><span class="slds-truncate">All Prompts</span></a></li>
+          <li class="slds-nav-vertical__item"><a href="#" class="slds-nav-vertical__action"><span class="slds-truncate">Analytics</span></a></li>
+          <li class="slds-nav-vertical__item"><a href="#" class="slds-nav-vertical__action"><span class="slds-truncate">Settings</span></a></li>
+        </ul>
+      </li>
+      <li class="slds-nav-vertical__item app-nav-section-item">
+        <button type="button" class="slds-nav-vertical__action slds-nav-vertical__action_overflow app-nav-section-header" aria-expanded="true" aria-controls="nav-section-testing">
+          <span class="slds-icon_container slds-m-right_x-small">
+            <svg class="slds-icon slds-icon_xx-small slds-icon-text-default" aria-hidden="true">
+              <use href="theme/slds-1/assets/icons/utility-sprite/svg/symbols.svg#table"></use>
+            </svg>
+          </span>
+          <span class="slds-nav-vertical__action-text">Testing</span>
+          <span class="app-nav-section-icon">
+            <span class="app-nav-icon-expand" aria-hidden="true"><svg class="slds-icon slds-icon_xx-small slds-icon-text-default" aria-hidden="true"><use href="theme/slds-1/assets/icons/utility-sprite/svg/symbols.svg#add"></use></svg></span>
+            <span class="app-nav-icon-collapse" aria-hidden="true"><svg class="slds-icon slds-icon_xx-small slds-icon-text-default" aria-hidden="true"><use href="theme/slds-1/assets/icons/utility-sprite/svg/symbols.svg#dash"></use></svg></span>
+          </span>
+        </button>
+        <ul id="nav-section-testing" class="slds-nav-vertical__list app-nav-sublist">
+          <li class="slds-nav-vertical__item"><a href="test-suites.html" class="slds-nav-vertical__action"><span class="slds-truncate">Test Suites</span></a></li>
+          <li class="slds-nav-vertical__item"><a href="metrics.html" class="slds-nav-vertical__action"><span class="slds-truncate">Metrics</span></a></li>
+        </ul>
+      </li>
+      <li class="slds-nav-vertical__item app-nav-section-item">
+        <button type="button" class="slds-nav-vertical__action slds-nav-vertical__action_overflow app-nav-section-header" aria-expanded="true" aria-controls="nav-section-analytics">
+          <span class="slds-icon_container slds-m-right_x-small">
+            <svg class="slds-icon slds-icon_xx-small slds-icon-text-default" aria-hidden="true">
+              <use href="theme/slds-1/assets/icons/utility-sprite/svg/symbols.svg#chart"></use>
+            </svg>
+          </span>
+          <span class="slds-nav-vertical__action-text">Analytics</span>
+          <span class="app-nav-section-icon">
+            <span class="app-nav-icon-expand" aria-hidden="true"><svg class="slds-icon slds-icon_xx-small slds-icon-text-default" aria-hidden="true"><use href="theme/slds-1/assets/icons/utility-sprite/svg/symbols.svg#add"></use></svg></span>
+            <span class="app-nav-icon-collapse" aria-hidden="true"><svg class="slds-icon slds-icon_xx-small slds-icon-text-default" aria-hidden="true"><use href="theme/slds-1/assets/icons/utility-sprite/svg/symbols.svg#dash"></use></svg></span>
+          </span>
+        </button>
+        <ul id="nav-section-analytics" class="slds-nav-vertical__list app-nav-sublist">
+          <li class="slds-nav-vertical__item"><a href="#" class="slds-nav-vertical__action"><span class="slds-truncate">Agent Analytics</span></a></li>
+          <li class="slds-nav-vertical__item"><a href="sessions-intents.html" class="slds-nav-vertical__action"><span class="slds-truncate">Sessions &amp; Intents</span></a></li>
+          <li class="slds-nav-vertical__item"><a href="#" class="slds-nav-vertical__action"><span class="slds-truncate">Consumption Cards</span></a></li>
+        </ul>
+      </li>
+      </ul>
+    </div>
+    <!-- Bottom: Collapse / Expand (flex-shrink: 0, pushed to bottom) -->
+    <ul class="slds-nav-vertical__list app-nav-list app-nav-bottom">
+      <li class="slds-nav-vertical__item">
+        <a href="#" class="slds-nav-vertical__action app-nav-toggle" title="Collapse sidebar" aria-label="Collapse sidebar">
+          <span class="slds-icon_container slds-m-right_x-small app-nav-toggle-icon-collapse" aria-hidden="true">
+            <svg class="slds-icon slds-icon_xx-small slds-icon-text-default" aria-hidden="true">
+              <use href="theme/slds-1/assets/icons/utility-sprite/svg/symbols.svg#jump_to_left"></use>
+            </svg>
+          </span>
+          <span class="slds-icon_container slds-m-right_x-small app-nav-toggle-icon-expand" aria-hidden="true" hidden>
+            <svg class="slds-icon slds-icon_xx-small slds-icon-text-default" aria-hidden="true">
+              <use href="theme/slds-1/assets/icons/utility-sprite/svg/symbols.svg#jump_to_right"></use>
+            </svg>
+          </span>
+          <span class="slds-truncate app-nav-toggle-label">Collapse</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

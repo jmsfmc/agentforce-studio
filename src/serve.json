@@ -1,0 +1,19 @@
+{
+  "rewrites": [
+    { "source": "my-agents/*", "destination": "/agent-detail.html" },
+    { "source": "asset-library/*", "destination": "/asset-library-detail.html" },
+    { "source": "connections/*", "destination": "/connection-detail.html" },
+    { "source": "mcp-servers/*", "destination": "/mcp-server-detail.html" },
+    { "source": "foundation-models/*", "destination": "/foundation-model-detail.html" },
+    { "source": "generative-models/*", "destination": "/generative-model-detail.html" },
+    { "source": "predictive-models/*", "destination": "/predictive-model-detail.html" },
+    { "source": "embedding-models/*", "destination": "/embedding-model-detail.html" },
+    { "source": "data-libraries/*", "destination": "/data-library-detail.html" },
+    { "source": "search-indexes/*", "destination": "/search-index-detail.html" },
+    { "source": "retrievers/*", "destination": "/retriever-detail.html" },
+    { "source": "prompts/*", "destination": "/prompt-detail.html" },
+    { "source": "test-suites/*", "destination": "/test-suite-detail.html" },
+    { "source": "metrics/*", "destination": "/metric-detail.html" },
+    { "source": "sessions-intents/*", "destination": "/session-detail.html" }
+  ]
+}

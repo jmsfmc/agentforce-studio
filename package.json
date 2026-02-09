@@ -1,0 +1,10 @@
+{
+  "name": "agentforce-studio",
+  "private": true,
+  "scripts": {
+    "start": "npx serve src"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}

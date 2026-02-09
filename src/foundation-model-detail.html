@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <base href="/" />
+  <title>Einstein GPT — Agentforce Studio</title>
+  <link rel="stylesheet" href="theme/slds-1/css/common/index.css" />
+  <link rel="stylesheet" href="theme/slds-1/css/global-header/base/index.css" />
+  <link rel="stylesheet" href="theme/slds-1/css/vertical-navigation/list/index.css" />
+  <link rel="stylesheet" href="theme/slds-1/css/vertical-navigation/expandable-section/index.css" />
+  <link rel="stylesheet" href="theme/slds-1/css/breadcrumbs/base/index.css" />
+  <link rel="stylesheet" href="theme/slds-1/css/icons/base/index.css" />
+  <link rel="stylesheet" href="theme/slds-1/css/button-icons/base/index.css" />
+  <link rel="stylesheet" href="theme/slds-1/css/page-headers/base/index.css" />
+  <link rel="stylesheet" href="theme/slds-1/css/tabs/base/index.css" />
+  <link rel="stylesheet" href="theme/slds-plus.css" />
+  <link rel="stylesheet" href="theme/slds-theme.css" />
+</head>
+<body>
+  <div id="app-global-header"></div>
+
+  <div class="app-shell slds-grid">
+    <div id="app-vertical-nav" data-vertical-nav-src="components/vertical-nav.html"></div>
+    <main id="main" class="app-main slds-grow" data-detail-type="foundation-models">
+      <div class="slds-page-header">
+        <div class="slds-page-header__row">
+          <div class="slds-page-header__col-title">
+            <div class="slds-media">
+              <div class="slds-media__figure">
+                <span class="slds-icon_container slds-icon-standard-bot">
+                  <svg class="slds-icon slds-page-header__icon" aria-hidden="true">
+                    <use href="theme/slds-1/assets/icons/standard-sprite/svg/symbols.svg#bot"></use>
+                  </svg>
+                </span>
+              </div>
+              <div class="slds-media__body">
+                <div class="slds-page-header__name">
+                  <div class="slds-page-header__name-title">
+                    <h1>
+                      <nav role="navigation" aria-label="Breadcrumbs">
+                        <ol class="slds-breadcrumb slds-list_horizontal slds-wrap">
+                          <li class="slds-breadcrumb__item">
+                            <a href="foundation-models.html">Foundation Models</a>
+                          </li>
+                          <li class="slds-breadcrumb__item">
+                            <a href="#">Einstein GPT</a>
+                          </li>
+                        </ol>
+                      </nav>
+                      <span class="slds-page-header__title slds-truncate" title="Einstein GPT">Einstein GPT</span>
+                    </h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slds-page-header__col-actions">
+            <div class="slds-page-header__controls">
+              <div class="slds-page-header__control">
+                <ul class="slds-button-group-list">
+                  <li>
+                    <button class="slds-button slds-button_neutral">Edit</button>
+                  </li>
+                  <li>
+                    <div class="slds-dropdown-trigger slds-dropdown-trigger_click">
+                      <button class="slds-button slds-button_icon slds-button_icon-border-filled" aria-haspopup="true" title="More Actions">
+                        <svg class="slds-button__icon" aria-hidden="true">
+                          <use href="theme/slds-1/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                        </svg>
+                        <span class="slds-assistive-text">More Actions</span>
+                      </button>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slds-tabs_default">
+        <ul class="slds-tabs_default__nav" role="tablist">
+          <li class="slds-tabs_default__item slds-is-active" title="Item One" role="presentation">
+            <a class="slds-tabs_default__link" href="#tab-default-1" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-default-1" id="tab-default-1__item">Item One</a>
+          </li>
+          <li class="slds-tabs_default__item" title="Item Two" role="presentation">
+            <a class="slds-tabs_default__link" href="#tab-default-2" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-2" id="tab-default-2__item">Item Two</a>
+          </li>
+          <li class="slds-tabs_default__item" title="Item Three" role="presentation">
+            <a class="slds-tabs_default__link" href="#tab-default-3" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-3" id="tab-default-3__item">Item Three</a>
+          </li>
+          <li class="slds-tabs_default__item" title="Item Four" role="presentation">
+            <a class="slds-tabs_default__link" href="#tab-default-4" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-4" id="tab-default-4__item">Item Four</a>
+          </li>
+        </ul>
+        <div id="tab-default-1" class="slds-tabs_default__content slds-show slds-p-around_medium" role="tabpanel" aria-labelledby="tab-default-1__item">
+          <p class="slds-text-body_regular">Detail content TBD.</p>
+        </div>
+        <div id="tab-default-2" class="slds-tabs_default__content slds-hide slds-p-around_medium" role="tabpanel" aria-labelledby="tab-default-2__item">Item Two Content</div>
+        <div id="tab-default-3" class="slds-tabs_default__content slds-hide slds-p-around_medium" role="tabpanel" aria-labelledby="tab-default-3__item">Item Three Content</div>
+        <div id="tab-default-4" class="slds-tabs_default__content slds-hide slds-p-around_medium" role="tabpanel" aria-labelledby="tab-default-4__item">Item Four Content</div>
+      </div>
+    </main>
+  </div>
+  <script src="js/global-header.js"></script>
+  <script src="js/list-config.js"></script>
+  <script src="js/detail-header.js"></script>
+  <script src="js/detail-tabs.js"></script>
+  <script src="js/vertical-nav.js"></script>
+</body>
+</html>
