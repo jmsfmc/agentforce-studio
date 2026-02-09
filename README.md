@@ -153,6 +153,76 @@ The template uses **Salesforce’s Lightning Design System** so the UI stays con
 
 The file is already set up with variables like `--app-nav-column-width` and `--app-global-header-height`. To change the sidebar width or header height, edit those values in `src/theme/slds-theme.css`. The project follows the rule: **no one-off colors or spacing in component HTML**; all visual customization stays in this theme file so everything stays consistent and easy to maintain.
 
+### Theme stack (diagram)
+
+```mermaid
+flowchart LR
+  subgraph base[" "]
+    A[SLDS 1 base]
+  end
+  subgraph plus[" "]
+    B[slds-plus.css]
+  end
+  subgraph overrides[" "]
+    C[slds-theme.css]
+  end
+
+  A --> B --> C --> D[Rendered UI]
+
+  style A fill:#e8f4fc
+  style B fill:#e8f4fc
+  style C fill:#cfe8f4
+```
+
+| Layer | What it is | Edit? |
+|-------|------------|--------|
+| **SLDS 1** | Core design system in `src/theme/slds-1/` (components, tokens, icons) | No — foundation only |
+| **SLDS 2** | `src/theme/slds-plus.css` — SLDS 2 tokens and component updates | No — upgrade path |
+| **Your overrides** | `src/theme/slds-theme.css` — nav width, header height, shell layout, token overrides | **Yes — single file for all visual changes** |
+
+---
+
+## How navigation works
+
+Every page uses the **same app shell**: a global header placeholder plus a **vertical nav placeholder** that is filled at runtime.
+
+1. **Placeholder** — Each HTML page has `<div id="app-vertical-nav">` (optionally with `data-vertical-nav-src="path/to/nav.html"` for subfolders).
+2. **Load** — `vertical-nav.js` runs when the page loads, fetches the nav markup from that URL (default: `components/vertical-nav.html`), and injects it into the placeholder.
+3. **Behavior** — The script then attaches: **active state** from the current URL (including detail→list mapping), **section expand/collapse**, and **sidebar collapse/expand** (with sessionStorage so the choice persists).
+4. **Links** — Nav items are normal `<a href="page.html">` links; clicking them loads a new page (full page load, not a single-page app).
+
+To **add a new page**: create a new HTML file in `src/` (e.g. `reports.html`) and add a link in `src/components/vertical-nav.html` in the right section. The script will highlight the correct item based on the URL.
+
+### Navigation flow (diagram)
+
+```mermaid
+flowchart TB
+  subgraph page["Each page (e.g. index.html, agents.html)"]
+    P[HTML with app shell]
+    P --> PH["#app-global-header"]
+    P --> PV["#app-vertical-nav\n(data-vertical-nav-src optional)"]
+    P --> PM["<main> content"]
+  end
+
+  subgraph load["On DOMContentLoaded"]
+    JS[vertical-nav.js]
+    JS --> FETCH[Fetch nav HTML from\ncomponents/vertical-nav.html]
+    FETCH --> INJECT[Inject into #app-vertical-nav]
+    INJECT --> ACTIVE[Set active item from URL]
+    INJECT --> SECTIONS[Attach section expand/collapse]
+    INJECT --> SIDEBAR[Attach sidebar collapse/expand\n+ sessionStorage]
+  end
+
+  PV --> JS
+
+  subgraph nav_markup["vertical-nav.html structure"]
+    TOP[Top: Getting Started, Home]
+    MID[Middle: Agents, Models, Data, Prompts, Testing, Analytics\n(scrollable, expandable sections)]
+    BOT[Bottom: Collapse / Expand]
+    TOP --> MID --> BOT
+  end
+```
+
 ---
 
 ## Quick reference
