@@ -70,7 +70,7 @@ Wait until it finishes. You only need to do this once per machine (or when the p
 In the same Terminal, run:
 
 ```bash
-npm start
+npx serve src
 ```
 
 You should see something like:
@@ -90,7 +90,7 @@ You should see something like:
 
 ### Stopping the app
 
-In the Terminal where `npm start` is running, press **Ctrl+C** to stop the server. You can run `npm start` again anytime to bring the app back.
+In the Terminal where `npx serve src` is running, press **Ctrl+C** to stop the server. You can run `npx serve src` again anytime to bring the app back.
 
 ---
 
@@ -232,7 +232,7 @@ flowchart TB
 | Task | Command or action |
 |------|--------------------|
 | First-time setup | Install Node from nodejs.org, then in Cursor Terminal: `npm install` |
-| Start the app | In project folder: `npm start` |
+| Start the app | In project folder: `npx serve src` |
 | Open the app | Browser: **http://localhost:3000** |
 | Stop the app | In Terminal: **Ctrl+C** |
 | Change nav / add pages | Edit `src/components/vertical-nav.html` and add or link new HTML in `src/` |
@@ -248,6 +248,6 @@ The UI is static HTML and standard SLDS markup. You can reuse the structure and 
 
 ## Need help?
 
-- **App won’t start** — Make sure you ran `npm install` in the project folder and that `node --version` works. Then run `npm start` from the same folder.
+- **App won’t start** — Make sure you ran `npm install` in the project folder and that `node --version` works. Then run `npx serve src` from the same folder.
 - **Icons or images missing** — Always use **http://localhost:3000**; don’t open `index.html` as a file.
 - **Want to add a feature** — Describe it in Cursor (e.g. “Add a Reports page and put it in the sidebar”) and point to this README so the AI keeps new pages and styling in the right places (nav component, `src/`, and `slds-theme.css`).
