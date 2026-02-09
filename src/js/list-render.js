@@ -37,11 +37,12 @@
       '<div class="slds-media__body"><span class="slds-truncate">' + escapeHtml(name) + '</span></div></div>';
   }
 
-  function actionsButtonHtml() {
-    return '<button class="slds-button slds-button_icon slds-button_icon-x-small" title="More actions">' +
-      '<svg class="slds-button__icon" aria-hidden="true">' +
+  function actionsButtonHtml(rowName) {
+    var label = rowName ? 'More actions for ' + escapeHtml(rowName) : 'More actions';
+    return '<button class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-haspopup="true" tabindex="0" title="' + label + '">' +
+      '<svg class="slds-button__icon slds-button__icon_hint slds-button__icon_small" aria-hidden="true">' +
       '<use href="' + UTILITY_SPRITE + '"></use></svg>' +
-      '<span class="slds-assistive-text">More actions</span></button>';
+      '<span class="slds-assistive-text">' + label + '</span></button>';
   }
 
   function render() {
@@ -87,18 +88,22 @@
     theadRow.className = 'slds-line-height_reset';
     config.columns.forEach(function (col) {
       var th = document.createElement('th');
+      th.className = 'slds-cell_action-mode';
       th.scope = 'col';
       th.innerHTML = '<div class="slds-truncate" title="' + escapeHtml(col.label) + '">' + escapeHtml(col.label) + '</div>';
       theadRow.appendChild(th);
     });
     var thActions = document.createElement('th');
+    thActions.className = 'slds-cell_action-mode';
     thActions.scope = 'col';
-    thActions.innerHTML = '<div class="slds-truncate" title="Actions">Actions</div>';
+    thActions.setAttribute('style', 'width:3.25rem');
+    thActions.innerHTML = '<div class="slds-truncate slds-assistive-text" title="Actions">Actions</div>';
     theadRow.appendChild(thActions);
     thead.innerHTML = '';
     thead.appendChild(theadRow);
 
     table.setAttribute('aria-label', config.title + ' list');
+    table.setAttribute('role', 'grid');
 
     tbody.innerHTML = '';
     config.rows.forEach(function (row) {
@@ -114,13 +119,16 @@
         var isFirst = i === 0;
         if (isFirst) {
           var th = document.createElement('th');
+          th.className = 'slds-cell_action-mode';
           th.setAttribute('data-label', col.label);
           th.scope = 'row';
           th.innerHTML = '<div class="slds-truncate" title="' + escapeHtml(nameVal) + '">' +
-            '<a href="' + escapeHtml(detailUrl) + '" tabindex="-1">' + escapeHtml(nameVal) + '</a></div>';
+            '<a href="' + escapeHtml(detailUrl) + '" tabindex="0">' + escapeHtml(nameVal) + '</a></div>';
           tr.appendChild(th);
         } else {
           var td = document.createElement('td');
+          td.className = 'slds-cell_action-mode';
+          td.setAttribute('role', 'gridcell');
           td.setAttribute('data-label', col.label);
           if (col.avatar && val) {
             td.innerHTML = avatarCellHtml(String(val));
@@ -131,7 +139,9 @@
         }
       });
       var tdActions = document.createElement('td');
-      tdActions.innerHTML = actionsButtonHtml();
+      tdActions.className = 'slds-cell_action-mode';
+      tdActions.setAttribute('role', 'gridcell');
+      tdActions.innerHTML = actionsButtonHtml(nameVal);
       tr.appendChild(tdActions);
       tbody.appendChild(tr);
     });
