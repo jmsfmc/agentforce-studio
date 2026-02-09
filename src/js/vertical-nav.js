@@ -189,7 +189,23 @@
       btn.addEventListener('click', function () {
         var expanded = this.getAttribute('aria-expanded') === 'true';
         this.setAttribute('aria-expanded', !expanded);
+        var state = getSectionExpandedState(container);
+        savePersistedState(loadPersistedCollapsed(), state);
       });
+    });
+  }
+
+  /**
+   * Apply section open state: only the active item's section plus any user-expanded sections.
+   * Call after injecting nav HTML: collapse all, restore persisted, then ensure active section is open.
+   */
+  function applySectionExpandedState(container) {
+    if (!container) return;
+    var persisted = loadPersistedSectionExpanded();
+    container.querySelectorAll('.app-nav-section-header').forEach(function (btn) {
+      var id = btn.getAttribute('aria-controls');
+      var expanded = id && persisted[id] === true;
+      btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
     });
   }
 
@@ -269,8 +285,9 @@
         placeholder.classList.add('app-vertical-nav_restoring');
         placeholder.innerHTML = html.trim();
         attachExpandCollapse(placeholder);
-        attachSidebarCollapseExpand(placeholder);
+        applySectionExpandedState(placeholder);
         setActiveFromUrl(placeholder);
+        attachSidebarCollapseExpand(placeholder);
         requestAnimationFrame(function () {
           placeholder.classList.remove('app-vertical-nav_restoring');
         });
