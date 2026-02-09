@@ -202,24 +202,24 @@ flowchart TB
   subgraph page["Each page (e.g. index.html, agents.html)"]
     P[HTML with app shell]
     P --> PH["#app-global-header"]
-    P --> PV["#app-vertical-nav\n(data-vertical-nav-src optional)"]
-    P --> PM["<main> content"]
+    P --> PV["#app-vertical-nav, data-vertical-nav-src optional"]
+    P --> PM["main content"]
   end
 
   subgraph load["On DOMContentLoaded"]
     JS[vertical-nav.js]
-    JS --> FETCH[Fetch nav HTML from\ncomponents/vertical-nav.html]
+    JS --> FETCH["Fetch nav HTML from components/vertical-nav.html"]
     FETCH --> INJECT[Inject into #app-vertical-nav]
     INJECT --> ACTIVE[Set active item from URL]
     INJECT --> SECTIONS[Attach section expand/collapse]
-    INJECT --> SIDEBAR[Attach sidebar collapse/expand\n+ sessionStorage]
+    INJECT --> SIDEBAR["Attach sidebar collapse/expand + sessionStorage"]
   end
 
   PV --> JS
 
   subgraph nav_markup["vertical-nav.html structure"]
     TOP[Top: Getting Started, Home]
-    MID[Middle: Agents, Models, Data, Prompts, Testing, Analytics\n(scrollable, expandable sections)]
+    MID["Middle: Agents, Models, Data, Prompts, Testing, Analytics - scrollable, expandable sections"]
     BOT[Bottom: Collapse / Expand]
     TOP --> MID --> BOT
   end
