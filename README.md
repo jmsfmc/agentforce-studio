@@ -1,5 +1,7 @@
 # Agentforce Studio Template
 
+![Agentforce Studio — My Agents view](agentforce-studio.png)
+
 A **ready-to-use starting point** for **designers**, **product managers**, and **developers** who want to build and share **Agentforce Studio**–style prototypes. No Salesforce org or backend required—just open the project in Cursor, run a couple of commands, and you get a local app that looks and feels like Agentforce Studio so you can explore ideas, test flows, and demo to stakeholders.
 
 ---
